@@ -5,9 +5,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.observe
 import org.nunocky.android_sharedviewmodel.databinding.ActivityMainBinding
-
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -20,8 +18,10 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.content1, LeftFragment.createInstance(), "Left").commit()
-            supportFragmentManager.beginTransaction().replace(R.id.content2, RightFragment.createInstance(), "Right").commit()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.content1, LeftFragment.createInstance(), "Left").commit()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.content2, RightFragment.createInstance(), "Right").commit()
         }
 
         viewModel.counter.observe(this) {
